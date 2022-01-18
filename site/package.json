@@ -1,0 +1,33 @@
+{
+  "name": "basic-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "basic-website",
+  "author": "domman95",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "dev": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.13.3",
+    "gatsby": "^4.1.5",
+    "gatsby-plugin-image": "^2.1.2",
+    "gatsby-plugin-react-helmet": "^5.1.0",
+    "gatsby-plugin-styled-components": "^5.1.0",
+    "gatsby-source-sanity": "^7.2.0",
+    "hamburger-react": "^2.4.1",
+    "normalize.css": "^8.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "styled-components": "^5.3.3"
+  }
+}
