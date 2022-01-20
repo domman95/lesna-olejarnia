@@ -16,6 +16,8 @@ const GlobalStyle = createGlobalStyle`
     --yellow: #D7B740;
     --black: #313131;
     --boxShadow: -10px -10px 20px #F0F6FC, 10px 10px 20px #CAD7E5;
+    --rightBoxShadow: 10px 10px 20px #CAD7E5;
+    --leftBoxShadow: -10px -10px 20px #F0F6FC;
   }
 
   html {
@@ -24,9 +26,17 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--white);
   }
 
+  body {
+    height: 200vh;
+    overflow: hidden;
+  }
+
+  h1,h2,h3,h4,h5,h6,p,a {
+    color: var(--black);
+  }
 
   img {
-    width: 100%;
+    max-width: 100%;
   }
 `;
 

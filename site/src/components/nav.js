@@ -22,6 +22,7 @@ const StyledNav = styled.nav`
   align-items: center;
   padding: 0 2rem;
   transition: box-shadow 0.3s linear;
+  z-index: 10;
 
   .logo {
     z-index: 10;
