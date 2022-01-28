@@ -10,6 +10,7 @@ import instagram from '../assets/instagram.svg';
 const StyledNav = styled.nav`
   position: fixed;
   width: calc(100vw - 4rem);
+  max-width: 160rem;
   top: 2rem;
   left: 50%;
   transform: translateX(-50%);
@@ -146,7 +147,6 @@ const LinkWrapper = styled.div`
         box-shadow: none;
         min-width: 100%;
         padding: 1rem;
-        /* transform: translateY(1rem); */
         border-radius: 0.5rem;
       }
     }
