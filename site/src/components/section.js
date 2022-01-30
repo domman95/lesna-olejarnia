@@ -1,16 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Heading } from './heading';
 
 const StyledSection = styled.section`
   max-width: 120rem;
   margin: 0 auto;
   padding: 10rem 2rem;
-
-  .heading {
-    font-weight: 700;
-    font-size: clamp(2.8rem, 2vw, 4rem);
-    text-align: center;
-  }
 
   .wrapper {
     display: grid;
@@ -36,7 +31,7 @@ const StyledSection = styled.section`
 export default function Section({ heading, children }) {
   return (
     <StyledSection>
-      <h2 className="heading">{heading}</h2>
+      <Heading>{heading}</Heading>
       {children}
     </StyledSection>
   );

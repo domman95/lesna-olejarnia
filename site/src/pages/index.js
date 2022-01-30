@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/header';
 import Layout from '../components/layout';
-import Section from '../components/section';
+import Proofs from '../components/proofs';
 import About from '../templates/about';
 
 export default function HomePage() {
@@ -10,6 +10,7 @@ export default function HomePage() {
       <Header />
       <main>
         <About />
+        <Proofs />
       </main>
     </Layout>
   );
