@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Box = styled.section`
+export const Box = styled.article`
   display: grid;
   justify-items: center;
   box-shadow: var(--boxShadow);
