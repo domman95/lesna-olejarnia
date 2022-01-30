@@ -3,6 +3,7 @@ import Header from '../components/header';
 import Layout from '../components/layout';
 import Proofs from '../components/proofs';
 import About from '../templates/about';
+import Products from '../templates/products';
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
       <main>
         <About />
         <Proofs />
+        <Products />
       </main>
     </Layout>
   );
