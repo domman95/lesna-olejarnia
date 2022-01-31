@@ -8,6 +8,10 @@ export const Box = styled.article`
   background-color: var(--white);
   border-radius: var(--radius);
 
+  &.contact {
+    padding: 2rem 0;
+  }
+
   .photo {
     justify-self: center;
     transform: translateY(-6rem) rotate(-6deg);
@@ -40,6 +44,14 @@ export const Box = styled.article`
   @media (min-width: 700px) {
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
+
+    &.line {
+      grid-template-columns: 1fr 1px 1fr;
+    }
+
+    &.contact {
+      padding: 6rem 0;
+    }
 
     .content {
       align-self: center;

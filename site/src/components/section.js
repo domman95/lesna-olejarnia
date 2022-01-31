@@ -1,11 +1,27 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Heading } from './heading';
 
 const StyledSection = styled.section`
   max-width: 120rem;
   margin: 0 auto;
   padding: 10rem 2rem;
+
+  ${({ line }) =>
+    line &&
+    css`
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100vw;
+        border-bottom: 1px solid var(--green);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    `}
 
   .wrapper {
     display: grid;
@@ -28,9 +44,9 @@ const StyledSection = styled.section`
   }
 `;
 
-export default function Section({ heading, children }) {
+export default function Section({ line, heading, children }) {
   return (
-    <StyledSection>
+    <StyledSection line={line}>
       <Heading>{heading}</Heading>
       {children}
     </StyledSection>

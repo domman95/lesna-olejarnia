@@ -38,6 +38,20 @@ const GlobalStyle = createGlobalStyle`
   img {
     max-width: 100%;
   }
+
+  li {
+    list-style: none;
+  }
+
+  .buttonLink {
+    font-size: 1.6rem;
+    text-decoration: none;
+    font-weight: 200;
+    text-shadow: var(--boxShadow);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 `;
 
 export default GlobalStyle;
