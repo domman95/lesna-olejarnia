@@ -8,7 +8,8 @@ export const Box = styled.article`
   background-color: var(--white);
   border-radius: var(--radius);
 
-  &.contact {
+  &.contact,
+  &.products {
     padding: 2rem 0;
   }
 

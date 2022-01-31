@@ -177,14 +177,14 @@ export default function Nav() {
       <LinkWrapper toggle={setOpen} toggled={isOpen}>
         <ul>
           <li className="link">
-            <Link to="#o-nas" onClick={() => setOpen(false)}>
+            <Link to="/#o-nas" onClick={() => setOpen(false)}>
               o nas
             </Link>
           </li>
           <li className="link details">
             <Link
               className="summary"
-              to="#produkty"
+              to="/#produkty"
               onClick={() => setOpen(false)}>
               produkty
             </Link>
@@ -198,7 +198,7 @@ export default function Nav() {
             </ul>
           </li>
           <li className="link">
-            <Link to="#kontakt" onClick={() => setOpen(false)}>
+            <Link to="/#kontakt" onClick={() => setOpen(false)}>
               kontakt
             </Link>
           </li>

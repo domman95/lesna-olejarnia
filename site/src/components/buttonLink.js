@@ -1,12 +1,33 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Arrow } from './arrow';
 
-export default function ButtonLink({ children, link = '/' }) {
+const StyledButtonLink = styled(Link)`
+  ${({ secondary }) =>
+    secondary &&
+    css`
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      color: var(--white);
+      background-color: var(--green);
+      border-radius: var(--radius);
+      box-shadow: var(--boxShadow);
+
+      svg path {
+        stroke: var(--white);
+      }
+    `}
+`;
+
+export default function ButtonLink({
+  secondary = false,
+  children,
+  link = '/',
+}) {
   return (
-    <Link className="buttonLink" to={link}>
+    <StyledButtonLink className="buttonLink" secondary={secondary} to={link}>
       {children} <Arrow />
-    </Link>
+    </StyledButtonLink>
   );
 }
