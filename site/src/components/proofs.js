@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Paragraph } from './paragraph';
 import { Title } from './title';
 
-const StyledProofs = styled.section`
+export const StyledGreenBackground = styled.section`
   padding: 2rem 0;
   background-color: var(--green);
 
@@ -27,13 +27,13 @@ const StyledProofs = styled.section`
 
 export default function Proofs() {
   return (
-    <StyledProofs>
+    <StyledGreenBackground>
       <Title className="title">Rekomendacje naszych klientów</Title>
       <Paragraph className="paragraph">
         “Bardzo polecam zamawiam juz kolejna paczuszke świetna jakość produktów
         przemile obsługa Pani Właścicielki”
       </Paragraph>
       <p className="author">@malgorzata_puch</p>
-    </StyledProofs>
+    </StyledGreenBackground>
   );
 }

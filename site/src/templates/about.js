@@ -10,7 +10,7 @@ import { Paragraph } from '../components/paragraph';
 
 export default function About() {
   return (
-    <Section heading="O nas">
+    <Section heading="O nas" name="o-nas">
       <div className="wrapper">
         <Box className="box">
           <div className="photo">

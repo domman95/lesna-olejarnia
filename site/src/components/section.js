@@ -44,9 +44,9 @@ const StyledSection = styled.section`
   }
 `;
 
-export default function Section({ line, heading, children }) {
+export default function Section({ name, line, heading, children }) {
   return (
-    <StyledSection line={line}>
+    <StyledSection line={line} id={name}>
       <Heading>{heading}</Heading>
       {children}
     </StyledSection>

@@ -9,7 +9,7 @@ import rzepakowy from '../assets/rzepakowy.png';
 
 export default function Products() {
   return (
-    <Section line heading="Nasze produkty">
+    <Section line heading="Nasze produkty" name="produkty">
       <div className="wrapper">
         <Box className="box">
           <div className="roundedPhoto">

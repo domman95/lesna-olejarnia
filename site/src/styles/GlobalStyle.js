@@ -52,6 +52,7 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     gap: 1rem;
   }
+
 `;
 
 export default GlobalStyle;

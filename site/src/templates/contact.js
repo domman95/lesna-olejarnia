@@ -18,7 +18,7 @@ const Socials = styled.ul`
 
 export default function Contact() {
   return (
-    <Section heading="Poznajmy się">
+    <Section heading="Poznajmy się" name="kontakt">
       <div className="wrapper">
         <Box className="contact line">
           <div className="content">
