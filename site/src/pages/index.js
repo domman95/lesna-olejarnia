@@ -4,7 +4,6 @@ import Layout from '../components/layout';
 import Proofs from '../components/proofs';
 import About from '../templates/about';
 import Contact from '../templates/contact';
-import Footer from '../templates/footer';
 import Products from '../templates/products';
 
 export default function HomePage() {
@@ -17,7 +16,6 @@ export default function HomePage() {
         <Products />
         <Contact />
       </main>
-      <Footer />
     </Layout>
   );
 }

@@ -2,7 +2,6 @@ import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
-import rzepakowy from '../assets/rzepakowy.png';
 import { Paragraph } from './paragraph';
 
 const StyledShortProduct = styled.li`
@@ -15,6 +14,7 @@ const StyledShortProduct = styled.li`
   a {
     display: inline-flex;
     align-items: center;
+    height: 100%;
     gap: 1rem;
   }
 

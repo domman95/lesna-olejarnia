@@ -26,7 +26,10 @@ export default function ButtonLink({
   link = '/',
 }) {
   return (
-    <StyledButtonLink className="buttonLink" secondary={secondary} to={link}>
+    <StyledButtonLink
+      className="buttonLink"
+      secondary={secondary ? 1 : 0}
+      to={link}>
       {children} <Arrow />
     </StyledButtonLink>
   );

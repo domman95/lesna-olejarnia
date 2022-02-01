@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import logo from '../assets/logo.png';
 import { Divide as Hamburger } from 'hamburger-react';
 import details from '../assets/details.svg';
@@ -22,8 +22,18 @@ const StyledNav = styled.nav`
   grid-template-columns: 11rem 1fr;
   align-items: center;
   padding: 0 2rem;
-  transition: box-shadow 0.3s linear;
+  transition: 0.3s linear;
   z-index: 10;
+
+  ${({ position }) =>
+    position > 200 &&
+    css`
+      width: 100vw;
+      top: 0;
+      border-radius: 0;
+      box-shadow: none;
+      border-bottom: 1px solid var(--green);
+    `}
 
   .logo {
     z-index: 10;
@@ -168,9 +178,20 @@ const LinkWrapper = styled.div`
 
 export default function Nav() {
   const [isOpen, setOpen] = useState(false);
+  const [posY, setPosY] = useState(0);
+
+  useEffect(() => {
+    const checkScrollY = () => setPosY(window.scrollY);
+
+    window.addEventListener('scroll', checkScrollY);
+
+    return () => {
+      window.removeEventListener('scroll', checkScrollY);
+    };
+  }, [posY]);
 
   return (
-    <StyledNav toggled={isOpen}>
+    <StyledNav toggled={isOpen} position={posY}>
       <Link to="/" className="logo" onClick={() => setOpen(false)}>
         <img src={logo} alt="lesna olejarnia" />
       </Link>

@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import { Arrow } from '../components/arrow';
@@ -38,10 +39,10 @@ export default function ProductsPage() {
     <Layout>
       <StyledMain>
         <div className="backToHomePage">
-          <a className="buttonLink" href="/">
+          <Link className="buttonLink" to="/">
             <Arrow />
             powrót na stronę główną
-          </a>
+          </Link>
         </div>
         <Section heading="Oleje">
           <div className="wrapper">

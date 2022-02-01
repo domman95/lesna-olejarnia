@@ -18,7 +18,7 @@ export default function Product({ product }) {
         <Paragraph className="yellow">
           Produkt należy przechowywać w lodówce!
         </Paragraph>
-        <ButtonLink secondary="true" link="/#kontakt">
+        <ButtonLink secondary link="/#kontakt">
           skontaktuj się, aby zamówić
         </ButtonLink>
       </div>
