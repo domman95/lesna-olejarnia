@@ -8,6 +8,7 @@ import facebook from '../assets/facebook.svg';
 import instagram from '../assets/instagram.svg';
 
 const StyledNav = styled.nav`
+  position: relative;
   position: fixed;
   width: calc(100vw - 4rem);
   max-width: 160rem;
@@ -24,6 +25,21 @@ const StyledNav = styled.nav`
   padding: 0 2rem;
   transition: 0.3s linear;
   z-index: 10;
+
+  ${({ toggled }) =>
+    toggled &&
+    css`
+      &::before {
+        content: '';
+        position: absolute;
+        top: -2rem;
+        right: 0;
+        width: 100vw;
+        height: calc(100vh + 2rem);
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 11;
+      }
+    `}
 
   ${({ position }) =>
     position > 200 &&
@@ -48,6 +64,7 @@ const StyledNav = styled.nav`
 
     .hamburger-react {
       display: block;
+      z-index: 12;
     }
   }
 `;
@@ -56,6 +73,7 @@ const LinkWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 11rem;
   align-items: center;
+  z-index: 12;
 
   .details {
     position: relative;
@@ -139,6 +157,13 @@ const LinkWrapper = styled.div`
     justify-content: space-between;
     transition: transform 0.3s linear;
 
+    ${({ position }) =>
+      position > 200 &&
+      css`
+        top: 0;
+        right: 0;
+      `}
+
     .details {
       position: static;
 
@@ -178,7 +203,7 @@ const LinkWrapper = styled.div`
 
 export default function Nav() {
   const [isOpen, setOpen] = useState(false);
-  const [posY, setPosY] = useState(0);
+  const [posY, setPosY] = useState(window.scrollY);
 
   useEffect(() => {
     const checkScrollY = () => setPosY(window.scrollY);
@@ -195,7 +220,7 @@ export default function Nav() {
       <Link to="/" className="logo" onClick={() => setOpen(false)}>
         <img src={logo} alt="lesna olejarnia" />
       </Link>
-      <LinkWrapper toggle={setOpen} toggled={isOpen}>
+      <LinkWrapper toggle={setOpen} toggled={isOpen} position={posY}>
         <ul>
           <li className="link">
             <Link to="/#o-nas" onClick={() => setOpen(false)}>

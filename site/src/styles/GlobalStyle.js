@@ -45,11 +45,11 @@ const GlobalStyle = createGlobalStyle`
 
   .buttonLink {
     font-size: 1.6rem;
-    text-decoration: none;
     font-weight: 200;
     text-shadow: var(--boxShadow);
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    white-space: nowrap;
     gap: 1rem;
   }
 

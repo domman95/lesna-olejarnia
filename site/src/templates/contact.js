@@ -14,6 +14,31 @@ import mail from '../assets/mail.svg';
 const Socials = styled.ul`
   display: grid;
   gap: 1rem;
+
+  li a {
+    position: relative;
+    display: inline-flex;
+
+    .arrow {
+      position: relative;
+      height: 2rem;
+      width: 2rem;
+      overflow: hidden;
+
+      svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(100%, -50%) rotate(180deg);
+        transition: transform 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+      }
+    }
+
+    &:hover .arrow svg,
+    &:focus .arrow svg {
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+  }
 `;
 
 export default function Contact() {
@@ -31,11 +56,17 @@ export default function Contact() {
               <li>
                 <a href="/" className="buttonLink">
                   <img src={instagram} alt="" /> instagram/lesnaolejarnia
+                  <div className="arrow">
+                    <Arrow />
+                  </div>
                 </a>
               </li>
               <li>
                 <a href="/" className="buttonLink">
                   <img src={facebook} alt="" /> facebook/lesnaolejarnia
+                  <div className="arrow">
+                    <Arrow />
+                  </div>
                 </a>
               </li>
             </Socials>
