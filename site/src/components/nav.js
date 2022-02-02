@@ -203,7 +203,7 @@ const LinkWrapper = styled.div`
 
 export default function Nav() {
   const [isOpen, setOpen] = useState(false);
-  const [posY, setPosY] = useState(window.scrollY);
+  const [posY, setPosY] = useState();
 
   useEffect(() => {
     const checkScrollY = () => setPosY(window.scrollY);
