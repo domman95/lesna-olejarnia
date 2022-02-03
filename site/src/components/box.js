@@ -10,35 +10,31 @@ export const Box = styled.article`
 
   &.contact,
   &.products {
-    padding: 2rem 0;
+    padding: 4rem 0;
   }
 
-  .photo {
+  &.products {
+    gap: 2rem;
+  }
+
+  .gatsbyImg {
     justify-self: center;
     transform: translateY(-6rem) rotate(-6deg);
     max-width: 75%;
-
-    & > * {
-      border-radius: var(--radius);
-    }
-
-    img {
-      max-height: 44rem;
-      box-shadow: var(--boxShadow);
-    }
+    max-height: 44rem;
+    border-radius: var(--radius);
+    box-shadow: var(--boxShadow);
   }
 
-  .roundedPhoto {
+  .gatsbyImgRounded {
     justify-self: center;
     max-width: 75%;
-    max-height: 85%;
+    max-height: 44rem;
     aspect-ratio: 1 / 1;
     border-radius: 50% 40% 43% 52% / 46% 36% 51% 44%;
-    overflow: hidden;
 
     img {
-      max-height: 44rem;
-      box-shadow: var(--boxShadow);
+      border-radius: 50% 40% 43% 52% / 46% 36% 51% 44%;
     }
   }
 

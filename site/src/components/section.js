@@ -16,7 +16,7 @@ const StyledSection = styled.section`
         content: '';
         position: absolute;
         width: 100vw;
-        border-bottom: 1px solid var(--green);
+        border-bottom: 2px solid var(--green);
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);

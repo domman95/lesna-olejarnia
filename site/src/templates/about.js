@@ -33,9 +33,11 @@ export default function About() {
       <div className="wrapper">
         {aboutInfo.map(({ id, title, description, image }) => (
           <Box className="box" key={id}>
-            <div className="photo">
-              <GatsbyImage image={image.asset.gatsbyImageData} alt={title} />
-            </div>
+            <GatsbyImage
+              className="gatsbyImg"
+              image={image.asset.gatsbyImageData}
+              alt={title}
+            />
             <div className="content">
               <Title>{title}</Title>
               <Paragraph>{description}</Paragraph>

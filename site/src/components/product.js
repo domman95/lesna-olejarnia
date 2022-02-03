@@ -9,12 +9,12 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 export default function Product({ product }) {
   return (
     <Box className="box products" id={product.name}>
-      <div className="roundedPhoto">
-        <GatsbyImage
-          image={product.image.asset.gatsbyImageData}
-          alt={product.name}
-        />
-      </div>
+      <GatsbyImage
+        className="gatsbyImgRounded"
+        image={product.image.asset.gatsbyImageData}
+        alt={product.name}
+      />
+
       <div className="content">
         <Title>{product.name}</Title>
         <ProductDetails product={product} />

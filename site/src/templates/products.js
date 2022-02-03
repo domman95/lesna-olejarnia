@@ -35,9 +35,11 @@ export default function Products() {
         {data.basicCategoryInfo.nodes.map(
           ({ id, title, slug, image, description }) => (
             <Box className="box products" key={id}>
-              <div className="roundedPhoto">
-                <GatsbyImage image={image.asset.gatsbyImageData} alt={title} />
-              </div>
+              <GatsbyImage
+                className="gatsbyImgRounded"
+                image={image.asset.gatsbyImageData}
+                alt={title}
+              />
               <div className="content">
                 <Title>{title}</Title>
                 <Paragraph>{description}</Paragraph>

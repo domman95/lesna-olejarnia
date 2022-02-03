@@ -9,7 +9,7 @@ const StyledLine = styled.div`
   @media (min-width: 700px) {
     width: 1px;
     height: 120%;
-    border-left: 1px solid var(--green);
+    border-left: 2px solid var(--green);
     margin: 0;
   }
 `;

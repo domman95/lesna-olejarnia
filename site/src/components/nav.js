@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
   position: relative;
   position: fixed;
   width: calc(100vw - 4rem);
-  max-width: 160rem;
+  /* max-width: 160rem; */
   top: 2rem;
   left: 50%;
   transform: translateX(-50%);

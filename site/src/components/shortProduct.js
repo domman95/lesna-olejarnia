@@ -25,7 +25,11 @@ const StyledShortProduct = styled.li`
   .shortImage {
     width: 4rem;
     height: 4rem;
-    border-radius: 50% 40% 43% 52% / 46% 36% 51% 44%;
+    aspect-ratio: 1 / 1;
+
+    img {
+      border-radius: 50% 40% 43% 52% / 46% 36% 51% 44%;
+    }
   }
 `;
 
