@@ -4,8 +4,7 @@ import styled, { css } from 'styled-components';
 import logo from '../assets/logo.png';
 import { Divide as Hamburger } from 'hamburger-react';
 import details from '../assets/details.svg';
-import facebook from '../assets/facebook.svg';
-import instagram from '../assets/instagram.svg';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const StyledNav = styled.nav`
   position: relative;
@@ -226,8 +225,31 @@ export default function Nav() {
           title
         }
       }
+
+      socials: allSanityContact(
+        filter: {
+          iconsAndLinks: {
+            elemMatch: { name: { eq: "facebook/lesnaolejarnia" } }
+          }
+        }
+      ) {
+        nodes {
+          iconsAndLinks {
+            url
+            id
+            icon {
+              asset {
+                gatsbyImageData
+              }
+            }
+          }
+        }
+      }
     }
   `);
+
+  const category = data.category.nodes;
+  const socials = data.socials.nodes;
 
   return (
     <StyledNav toggled={isOpen} position={posY}>
@@ -249,7 +271,7 @@ export default function Nav() {
               produkty
             </Link>
             <ul className="subMenu">
-              {data.category.nodes.map(({ id, title, slug }) => (
+              {category.map(({ id, title, slug }) => (
                 <li className="subLink" key={id}>
                   <Link to={`/${slug.current}`} onClick={() => setOpen(false)}>
                     {title.toLowerCase()}
@@ -265,12 +287,11 @@ export default function Nav() {
           </li>
         </ul>
         <div className="socials">
-          <a href="/">
-            <img src={facebook} alt="facebook" />
-          </a>
-          <a href="/">
-            <img src={instagram} alt="instagram" />
-          </a>
+          {socials[0].iconsAndLinks.map(({ id, url, icon }) => (
+            <a href={url} key={id}>
+              <GatsbyImage image={icon.asset.gatsbyImageData} alt={url} />
+            </a>
+          ))}
         </div>
       </LinkWrapper>
       <Hamburger toggled={isOpen} toggle={setOpen} />

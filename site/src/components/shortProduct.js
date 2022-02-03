@@ -22,7 +22,7 @@ const StyledShortProduct = styled.li`
     transform: scale(1.01);
   }
 
-  img {
+  .shortImage {
     width: 4rem;
     height: 4rem;
     border-radius: 50% 40% 43% 52% / 46% 36% 51% 44%;
@@ -33,7 +33,11 @@ export default function ShortProduct({ name, image }) {
   return (
     <StyledShortProduct role="button">
       <Link to={`#${name}`}>
-        <GatsbyImage image={image.asset.gatsbyImageData} alt={name} />
+        <GatsbyImage
+          className="shortImage"
+          image={image.asset.gatsbyImageData}
+          alt={name}
+        />
         <Paragraph>{name}</Paragraph>
       </Link>
     </StyledShortProduct>
