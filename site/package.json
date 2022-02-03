@@ -17,11 +17,12 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.13.3",
+    "dotenv": "^15.0.0",
     "gatsby": "^4.1.5",
     "gatsby-plugin-image": "^2.1.2",
     "gatsby-plugin-react-helmet": "^5.1.0",
     "gatsby-plugin-styled-components": "^5.1.0",
-    "gatsby-source-sanity": "^7.2.0",
+    "gatsby-source-sanity": "^7.3.2",
     "hamburger-react": "^2.4.1",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",

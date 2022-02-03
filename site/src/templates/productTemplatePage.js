@@ -3,11 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Arrow } from '../components/arrow';
 import Layout from '../components/layout';
-import { Paragraph } from '../components/paragraph';
 import Product from '../components/product';
 import Section from '../components/section';
 import ShortProduct from '../components/shortProduct';
-import { products } from '../fakeData';
 
 const StyledMain = styled.main`
   padding-top: 20rem;
@@ -34,7 +32,9 @@ const StyledMain = styled.main`
   }
 `;
 
-export default function ProductsPage() {
+export default function ProductsTemplate({ pageContext }) {
+  const { products, title } = pageContext;
+
   return (
     <Layout>
       <StyledMain>
@@ -44,7 +44,7 @@ export default function ProductsPage() {
             powrót na stronę główną
           </Link>
         </div>
-        <Section heading="Oleje">
+        <Section heading={title}>
           <div className="wrapper">
             <ul className="shortListOfAllProducts">
               {products.map(({ id, name, image }) => (

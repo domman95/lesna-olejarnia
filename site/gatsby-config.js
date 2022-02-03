@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: 'My Title',
@@ -7,15 +9,15 @@ module.exports = {
     image: '/image.jpg',
   },
   plugins: [
-    // HEADLESS CMS: SANITY.IO - UNCOMMENT WHEN CREATED SANITY PROJECT
-    // {
-    //   resolve: 'gatsby-source-sanity',
-    //   options: {
-    //     projectId: 'xxx',
-    //     token: '',
-    //     dataset: 'production',
-    //   },
-    // },
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: 'qb0g51va',
+        token: process.env.SANITY_TOKEN,
+        dataset: 'production',
+        watchMode: true,
+      },
+    },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-image',

@@ -18,9 +18,12 @@ export const Box = styled.article`
     transform: translateY(-6rem) rotate(-6deg);
     max-width: 75%;
 
+    & > * {
+      border-radius: var(--radius);
+    }
+
     img {
       max-height: 44rem;
-      border-radius: var(--radius);
       box-shadow: var(--boxShadow);
     }
   }
@@ -28,7 +31,8 @@ export const Box = styled.article`
   .roundedPhoto {
     justify-self: center;
     max-width: 75%;
-    max-height: 75%;
+    max-height: 85%;
+    aspect-ratio: 1 / 1;
     border-radius: 50% 40% 43% 52% / 46% 36% 51% 44%;
     overflow: hidden;
 

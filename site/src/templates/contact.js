@@ -7,9 +7,8 @@ import { Title } from '../components/title';
 import { Arrow } from '../components/arrow';
 import { Line } from '../components/line';
 
-import instagram from '../assets/instagram.svg';
-import facebook from '../assets/facebook.svg';
-import mail from '../assets/mail.svg';
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const Socials = styled.ul`
   display: grid;
@@ -42,46 +41,63 @@ const Socials = styled.ul`
 `;
 
 export default function Contact() {
+  const data = useStaticQuery(graphql`
+    query {
+      contactInfo: allSanityContact {
+        nodes {
+          title
+          id
+          description
+          iconsAndLinks {
+            name
+            url
+            id
+            icon {
+              asset {
+                gatsbyImageData
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const contactInfo = data.contactInfo.nodes;
+
   return (
     <Section heading="Poznajmy się" name="kontakt">
       <div className="wrapper">
         <Box className="contact line">
-          <div className="content">
-            <Title>Nasze profile w Social Mediach!</Title>
-            <Paragraph>
-              Staramy się być wszędzie gdzie tylko zechcesz nas spotkać, dlatego
-              oferujemy kontakt poprzez popularne serwisy społecznościowe!
-            </Paragraph>
-            <Socials>
-              <li>
-                <a href="/" className="buttonLink">
-                  <img src={instagram} alt="" /> instagram/lesnaolejarnia
-                  <div className="arrow">
-                    <Arrow />
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="/" className="buttonLink">
-                  <img src={facebook} alt="" /> facebook/lesnaolejarnia
-                  <div className="arrow">
-                    <Arrow />
-                  </div>
-                </a>
-              </li>
-            </Socials>
-          </div>
-          <Line />
-          <div className="content">
-            <Title>Tradycyjna droga kontaktu?</Title>
-            <Paragraph>
-              Dla nas to żaden problem. Klikając w link poniżej możesz napisać
-              do nas bezpośrednio ze swojej skrzynki pocztowej!
-            </Paragraph>
-            <a href="mailto:lesnaolejarnia@gmail.com" className="buttonLink">
-              <img src={mail} alt="" /> lesnaolejarnia@gmail.com <Arrow />
-            </a>
-          </div>
+          {contactInfo.map(
+            ({ id, title, description, iconsAndLinks }, index) => (
+              <React.Fragment key={id}>
+                <div className="content">
+                  <Title>{title}</Title>
+                  <Paragraph>{description}</Paragraph>
+                  <Socials>
+                    {iconsAndLinks.map(({ id: linkId, name, url, icon }) => (
+                      <li key={linkId}>
+                        <a
+                          href={url.includes('http') ? url : `mailto:${url}`}
+                          className="buttonLink">
+                          <GatsbyImage
+                            image={icon.asset.gatsbyImageData}
+                            alt={name}
+                          />{' '}
+                          {name}
+                          <div className="arrow">
+                            <Arrow />
+                          </div>
+                        </a>
+                      </li>
+                    ))}
+                  </Socials>
+                </div>
+                {index === 0 && <Line />}
+              </React.Fragment>
+            )
+          )}
         </Box>
       </div>
     </Section>

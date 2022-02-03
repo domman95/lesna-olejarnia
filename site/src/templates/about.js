@@ -1,45 +1,48 @@
 import React from 'react';
-import { Box } from '../components/box';
-import Section from '../components/section';
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
-import about from '../assets/about.png';
-import picOfOil from '../assets/picOfOil.png';
+import Section from '../components/section';
 import ButtonLink from '../components/buttonLink';
 import { Title } from '../components/title';
 import { Paragraph } from '../components/paragraph';
+import { Box } from '../components/box';
 
 export default function About() {
+  const data = useStaticQuery(graphql`
+    query {
+      aboutInfo: allSanityAbout {
+        nodes {
+          title
+          id
+          description
+          image {
+            asset {
+              id
+              gatsbyImageData
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const aboutInfo = data.aboutInfo.nodes;
   return (
     <Section heading="O nas" name="o-nas">
       <div className="wrapper">
-        <Box className="box">
-          <div className="photo">
-            <img src={about} alt="" />
-          </div>
-          <div className="content">
-            <Title>To co nas wyróżnia, to naturalne składniki</Title>
-            <Paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-              aliquam, purus sit amet luctus venenatis, lectus magna fringilla
-              urna, porttitor rhoncus dolor purus non
-            </Paragraph>
-            <ButtonLink link="#produkty">sprawdź nasze produkty</ButtonLink>
-          </div>
-        </Box>
-        <Box className="box">
-          <div className="photo">
-            <img src={picOfOil} alt="" />
-          </div>
-          <div className="content">
-            <Title>Zdrowie wtłoczone do butelek</Title>
-            <Paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-              aliquam, purus sit amet luctus venenatis, lectus magna fringilla
-              urna, porttitor rhoncus dolor purus non
-            </Paragraph>
-            <ButtonLink link="#produkty">sprawdź nasze produkty</ButtonLink>
-          </div>
-        </Box>
+        {aboutInfo.map(({ id, title, description, image }) => (
+          <Box className="box" key={id}>
+            <div className="photo">
+              <GatsbyImage image={image.asset.gatsbyImageData} alt={title} />
+            </div>
+            <div className="content">
+              <Title>{title}</Title>
+              <Paragraph>{description}</Paragraph>
+              <ButtonLink link="#produkty">sprawdź nasze produkty</ButtonLink>
+            </div>
+          </Box>
+        ))}
       </div>
     </Section>
   );

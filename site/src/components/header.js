@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import ButtonLink from './buttonLink';
 
-import heroImg1 from '../assets/heroImg1.png';
-import heroImg2 from '../assets/heroImg2.png';
 import arrowDown from '../assets/arrow-down.svg';
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const StyledHeader = styled.header`
   position: relative;
@@ -39,34 +39,28 @@ const StyledHeader = styled.header`
     position: relative;
     flex: 1;
 
-    &::before,
-    &::after {
-      content: '';
+    .image {
       position: absolute;
-      background-size: cover;
-      background-repeat: no-repeat;
       border-radius: 2.5rem;
       width: 100%;
-    }
 
-    &::before {
-      top: 0;
-      left: 1rem;
-      background-image: url(${heroImg1});
-      max-width: 60%;
-      height: 90%;
-      transform: rotate(-6deg);
-      box-shadow: var(--leftBoxShadow);
-    }
+      &.left {
+        top: 0;
+        left: 1rem;
+        max-width: 60%;
+        height: 90%;
+        transform: rotate(-6deg);
+        box-shadow: var(--leftBoxShadow);
+      }
 
-    &::after {
-      background-image: url(${heroImg2});
-      max-width: 50%;
-      bottom: 0;
-      right: 1rem;
-      height: 80%;
-      transform: rotate(6deg);
-      box-shadow: var(--rightBoxShadow);
+      &.right {
+        bottom: 0;
+        right: 1rem;
+        height: 80%;
+        max-width: 60%;
+        transform: rotate(6deg);
+        box-shadow: var(--rightBoxShadow);
+      }
     }
   }
 
@@ -153,19 +147,52 @@ const StyledHeader = styled.header`
 `;
 
 export default function Header() {
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      headerInfo: allSanityHeader {
+        nodes {
+          title
+          subTitle
+          leftImage {
+            asset {
+              id
+              gatsbyImageData
+            }
+          }
+          rightImage {
+            asset {
+              id
+              gatsbyImageData
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const headerInfo = data.headerInfo.nodes[0];
+
   return (
     <StyledHeader>
       <div className="heroTextWrapper">
-        <h1 className="heroText">Naturalne oleje tłoczone na zimno</h1>
-        <p className="heroParagraph">
-          naszą pasją jest zdrowie, a oleje, które produkujemy są zdrowiem samym
-          w sobie
-        </p>
+        <h1 className="heroText">{headerInfo.title}</h1>
+        <p className="heroParagraph">{headerInfo.subTitle}</p>
         <ButtonLink link="#produkty">
           zapoznaj się z naszymi produktami
         </ButtonLink>
       </div>
-      <div className="heroImageWrapper" />
+      <div className="heroImageWrapper">
+        <GatsbyImage
+          image={headerInfo.leftImage.asset.gatsbyImageData}
+          alt="lesna olejarnia"
+          className="image left"
+        />
+        <GatsbyImage
+          image={headerInfo.rightImage.asset.gatsbyImageData}
+          alt="lesna olejarnia"
+          className="image right"
+        />
+      </div>
       <div className="scrollDownLine" />
     </StyledHeader>
   );

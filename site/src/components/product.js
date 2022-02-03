@@ -2,15 +2,18 @@ import React from 'react';
 import { Box } from './box';
 import { Title } from './title';
 import ButtonLink from './buttonLink';
-import rzepakowy from '../assets/rzepakowy.png';
 import ProductDetails from './productDetails';
 import { Paragraph } from './paragraph';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 export default function Product({ product }) {
   return (
     <Box className="box products" id={product.name}>
       <div className="roundedPhoto">
-        <img src={product.image} alt={product.name} />
+        <GatsbyImage
+          image={product.image.asset.gatsbyImageData}
+          alt={product.name}
+        />
       </div>
       <div className="content">
         <Title>{product.name}</Title>

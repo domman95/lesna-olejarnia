@@ -5,6 +5,7 @@ import { Arrow } from './arrow';
 
 const StyledButtonLink = styled(Link)`
   display: inline-flex;
+  white-space: nowrap;
 
   .arrow {
     position: relative;

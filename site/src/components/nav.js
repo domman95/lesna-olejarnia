@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import logo from '../assets/logo.png';
 import { Divide as Hamburger } from 'hamburger-react';
@@ -215,6 +215,20 @@ export default function Nav() {
     };
   }, [posY]);
 
+  const data = useStaticQuery(graphql`
+    query categoryName {
+      category: allSanityCategory {
+        nodes {
+          id
+          slug {
+            current
+          }
+          title
+        }
+      }
+    }
+  `);
+
   return (
     <StyledNav toggled={isOpen} position={posY}>
       <Link to="/" className="logo" onClick={() => setOpen(false)}>
@@ -235,12 +249,13 @@ export default function Nav() {
               produkty
             </Link>
             <ul className="subMenu">
-              <li className="subLink">
-                <Link to="/oleje">oleje</Link>
-              </li>
-              <li className="subLink">
-                <Link to="/oleje2">oleje 2</Link>
-              </li>
+              {data.category.nodes.map(({ id, title, slug }) => (
+                <li className="subLink" key={id}>
+                  <Link to={`/${slug.current}`} onClick={() => setOpen(false)}>
+                    {title.toLowerCase()}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </li>
           <li className="link">

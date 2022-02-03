@@ -1,8 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-
 import { Paragraph } from './paragraph';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const StyledShortProduct = styled.li`
   box-shadow: var(--boxShadow);
@@ -33,7 +33,7 @@ export default function ShortProduct({ name, image }) {
   return (
     <StyledShortProduct role="button">
       <Link to={`#${name}`}>
-        <img src={image} alt="" />
+        <GatsbyImage image={image.asset.gatsbyImageData} alt={name} />
         <Paragraph>{name}</Paragraph>
       </Link>
     </StyledShortProduct>
