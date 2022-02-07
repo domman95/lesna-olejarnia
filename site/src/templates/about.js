@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-
 import Section from '../components/section';
 import ButtonLink from '../components/buttonLink';
 import { Title } from '../components/title';
@@ -28,6 +27,7 @@ export default function About() {
   `);
 
   const aboutInfo = data.aboutInfo.nodes;
+
   return (
     <Section heading="O nas" name="o-nas">
       <div className="wrapper">
