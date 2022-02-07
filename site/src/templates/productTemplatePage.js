@@ -5,6 +5,7 @@ import { Arrow } from '../components/arrow';
 import Layout from '../components/layout';
 import Product from '../components/product';
 import Section from '../components/section';
+import Seo from '../components/seo';
 import ShortProduct from '../components/shortProduct';
 
 const StyledMain = styled.main`
@@ -37,6 +38,7 @@ export default function ProductsTemplate({ pageContext }) {
 
   return (
     <Layout>
+      <Seo title={title} />
       <StyledMain>
         <div className="backToHomePage">
           <Link className="buttonLink" to="/">

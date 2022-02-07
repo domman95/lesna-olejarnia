@@ -2,11 +2,11 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: 'My Title',
-    titleTemplate: '&s | Im always here!',
+    title: 'Strona główna',
+    titleTemplate: '%s | Leśna Olejarnia',
     description: 'Few the best words about the website!',
     url: 'https://localhost:8000',
-    image: '/image.jpg',
+    image: 'static/static.png',
   },
   plugins: [
     {
