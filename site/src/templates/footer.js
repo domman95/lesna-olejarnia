@@ -8,7 +8,7 @@ export default function Footer() {
       <GreenBackground>
         <Paragraph className="paragraph">
           Strona wykonana z <span className="icon">❤️ </span>
-          przez <a href="https://dlwebdev">dlwebdev.com</a>
+          przez <a href="https://dlwebdev.com">dlwebdev.com</a>
         </Paragraph>
       </GreenBackground>
     </footer>
