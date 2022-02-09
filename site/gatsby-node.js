@@ -1,3 +1,4 @@
+const { join } = require('path');
 const path = require('path');
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -39,9 +40,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const productTemplate = path.resolve(`src/templates/productTemplatePage.js`);
   result.data.allSanityCategory.nodes.forEach(
     ({ title, slug, listOfProducts }) => {
-      console.log(slug.current);
+      const turnTitleIntoSlug = (x) => {
+        const arrFromString = x.split(' ');
+        const joinArr = arrFromString.join('-');
+
+        return joinArr;
+      };
+
+      const resultSlug =
+        slug.current === '' ? turnTitleIntoSlug(title) : slug.current;
+
       createPage({
-        path: `/${slug.current}`,
+        path: `/${resultSlug}`,
         component: productTemplate,
         context: {
           products: [...listOfProducts],
